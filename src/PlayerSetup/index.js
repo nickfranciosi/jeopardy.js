@@ -52,11 +52,11 @@ class PlayerSetup extends React.Component {
     }
   }
 
-  renderPlayerForms(index) {
+  renderPlayerForms(id) {
     return (
       <PlayerForm
-        key={index}
-        playerId={index}
+        key={id}
+        playerId={id}
         save={this.handlePlayerSave}
         remove={this.handlePlayerRemove}
       />
