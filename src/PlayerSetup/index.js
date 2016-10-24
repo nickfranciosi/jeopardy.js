@@ -12,6 +12,9 @@ class PlayerSetup extends React.Component {
     this.handlePlayerSave = this.handlePlayerSave.bind(this);
     this.handlePlayerRemove = this.handlePlayerRemove.bind(this);
     this.addPlayerInput = this.addPlayerInput.bind(this);
+    this.ableToStartGame = this.ableToStartGame.bind(this);
+    this.ableToAddPlayers = this.ableToAddPlayers.bind(this);
+    this.handleStartGame = this.handleStartGame.bind(this);
   }
 
   componentWillMount() {
@@ -52,6 +55,10 @@ class PlayerSetup extends React.Component {
     }
   }
 
+  handleStartGame() {
+    console.log("start game");
+  }
+
   renderPlayerForms(id) {
     return (
       <PlayerForm
@@ -71,6 +78,14 @@ class PlayerSetup extends React.Component {
     }
   }
 
+  ableToStartGame(){
+    return this.state.players.filter(p => p.saved).length >= this.props.minPlayers;
+  }
+
+  ableToAddPlayers(){
+    return this.state.players.length < this.props.maxPlayers;
+  }
+
   render() {
     return (
       <div>
@@ -78,7 +93,8 @@ class PlayerSetup extends React.Component {
         <div>
           {this.state.players.map(p => this.renderPlayerForms(p.id))}
         </div>
-        <button onClick={this.addPlayerInput}>Add Player</button>
+        {this.ableToAddPlayers() && <button onClick={this.addPlayerInput}>Add Player</button> }
+        {this.ableToStartGame() && <button onClick={this.handleStartGame}>Start Game</button>}
       </div>
     );
   }

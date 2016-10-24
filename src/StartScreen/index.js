@@ -6,7 +6,7 @@ class StartScreen extends React.Component {
     return (
       <div>
         Start Screen Here we will set up our players
-        <PlayerSetup maxPlayers={3} minPlayers={1} />
+        <PlayerSetup maxPlayers={3} minPlayers={2} />
       </div>
 
     );

@@ -12,6 +12,7 @@ class PlayerForm extends React.Component {
     this.clearValue = this.clearValue.bind(this);
     this.handleSave = this.handleSave.bind(this);
     this.handleRemove = this.handleRemove.bind(this);
+    this.isValid = this.isValid.bind(this);
   }
 
   handleChange(e) {
@@ -21,10 +22,15 @@ class PlayerForm extends React.Component {
   }
 
   handleSave() {
+    if(this.isValid())
     this.props.save({
       id: this.props.playerId,
       name: this.state.value
     });
+  }
+
+  isValid() {
+    return this.state.value.length
   }
 
   handleRemove() {
@@ -48,7 +54,9 @@ class PlayerForm extends React.Component {
             onChange={this.handleChange}
           />
         </form>
-        <button onClick={this.clearValue}>Clear</button>
+        <button
+         className="clear"
+         onClick={this.clearValue}>Clear</button>
         <button onClick={this.handleSave}>Save</button>
         <button onClick={this.handleRemove}>Remove</button>
       </div>

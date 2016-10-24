@@ -1,6 +1,5 @@
 import React, { Component } from 'react';
 import { BrowserRouter as Router, Match, Miss, Link } from 'react-router';
-import GameBoard from './GameBoard';
 import StartScreen from './StartScreen';
 import NoMatch from './NoMatch';
 
