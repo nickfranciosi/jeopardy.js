@@ -1,7 +1,8 @@
 import React, { Component } from 'react';
 import { BrowserRouter as Router, Match, Miss, Link } from 'react-router';
-import StartScreen from './StartScreen';
+import PlayerSetup from './PlayerSetup';
 import NoMatch from './NoMatch';
+import GameBoard from './GameBoard';
 
 class App extends Component {
   render() {
@@ -10,9 +11,10 @@ class App extends Component {
         <div>
           <h2>Jeopardy</h2>
           <Link to="/settings">Settings</Link>
-          <Link to="/start">Start Game</Link>
 
-          <Match pattern="/start" exactly component={StartScreen}/>
+
+          <Match exactly pattern="/" component={PlayerSetup} />
+          <Match pattern="/gameboard" component={GameBoard} />
           <Miss component={NoMatch} />
         </div>
       </Router>

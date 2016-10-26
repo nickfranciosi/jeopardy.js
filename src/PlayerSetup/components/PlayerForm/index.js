@@ -1,4 +1,9 @@
-import React, {PropTypes} from 'react';
+import React, { PropTypes } from 'react';
+import styled from 'styled-components';
+
+let Wrapper = styled.div`
+  background: rgb(200, 40, ${props => props.flex * 70});
+`;
 
 class PlayerForm extends React.Component {
   constructor(props) {
@@ -45,26 +50,29 @@ class PlayerForm extends React.Component {
 
   render() {
     return (
-      <div>
+      <Wrapper flex={this.props.playerId}>
         <form>
-          <h3>I am a single Player Form</h3>
           <input
             value={this.state.value}
             type="text"
             onChange={this.handleChange}
           />
         </form>
-        <button
-         className="clear"
-         onClick={this.clearValue}>Clear</button>
-        <button onClick={this.handleSave}>Save</button>
-        <button onClick={this.handleRemove}>Remove</button>
-      </div>
+        { !this.props.playerExists && (
+          <div>
+            <button onClick={this.handleSave}>Save</button>
+            <button className="clear" onClick={this.clearValue}>Clear</button>
+          </div>
+        )}
+        { this.props.playerExists && <button onClick={this.handleRemove}>Edit</button> }
+      </Wrapper>
     );
   }
 }
 
 PlayerForm.propTypes = {
+  save: PropTypes.func,
+  remove: PropTypes.func,
 };
 
 export default PlayerForm;
