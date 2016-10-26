@@ -1,14 +1,9 @@
 import React, { PropTypes } from 'react';
 import { Link } from 'react-router';
-import styled from 'styled-components';
 import PlayerForm from './components/PlayerForm';
 import { v4 as randomId } from 'uuid';
 import { addPlayer, removePlayer } from './actions';
 import { connect } from 'react-redux';
-
-const FlexWrapper = styled.div`
-  display: flex;
-`;
 
 class PlayerSetup extends React.Component {
   checkIfPlayerExists(id) {
@@ -42,9 +37,9 @@ class PlayerSetup extends React.Component {
   render() {
     return (
       <div>
-        <FlexWrapper>
+        <div>
           {this.renderPlayerForms()}
-        </FlexWrapper>
+        </div>
         {this.ableToStartGame() && <Link to="/gameboard">Start Game</Link>}
       </div>
     );
@@ -63,6 +58,5 @@ PlayerSetup.defaultProps = {
   minPlayers: 3,
   maxPlayers: 3,
 }
-
 
 export default connect(({players})=>({players}), { addPlayer, removePlayer })(PlayerSetup);

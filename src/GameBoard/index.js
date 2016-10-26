@@ -1,4 +1,6 @@
 import React, { Component } from 'react';
+import { connect } from 'react-redux';
+import PlayerStatus from './components/PlayerStatus';
 
 class GameBoard extends Component{
 
@@ -6,9 +8,10 @@ class GameBoard extends Component{
     return (
       <div>
         This is the gameboard
+        {this.props.players.map((player) => <PlayerStatus key={player.id} {...player}/>)}
       </div>
     )
   }
 }
 
-export default GameBoard;
+export default connect(({players}) => ({players}))(GameBoard);

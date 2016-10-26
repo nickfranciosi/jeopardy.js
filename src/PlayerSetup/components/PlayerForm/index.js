@@ -30,7 +30,8 @@ class PlayerForm extends React.Component {
     if(this.isValid())
     this.props.save({
       id: this.props.playerId,
-      name: this.state.value
+      name: this.state.value,
+      score: 0
     });
   }
 
