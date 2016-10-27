@@ -1,17 +1,23 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
-import PlayerStatus from './components/PlayerStatus';
+import { playerStatusSelector } from './selectors';
+import PlayerList from './components/PlayerList';
 
 class GameBoard extends Component{
 
   render(){
+    const {players} = this.props;
     return (
       <div>
         This is the gameboard
-        {this.props.players.map((player) => <PlayerStatus key={player.id} {...player}/>)}
+        <PlayerList players={players} />
       </div>
     )
   }
 }
 
-export default connect(({players}) => ({players}))(GameBoard);
+const mapStateToProps = (state) => ({
+  players: playerStatusSelector(state),
+});
+
+export default connect(mapStateToProps)(GameBoard);

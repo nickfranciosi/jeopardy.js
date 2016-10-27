@@ -10,7 +10,7 @@ class App extends Component {
       <Router>
         <div>
           <h2>Jeopardy</h2>
-          <Link to="/settings">Settings</Link>
+          <Link to="/options">Options</Link>
 
 
           <Match exactly pattern="/" component={PlayerSetup} />
