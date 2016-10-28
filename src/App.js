@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
-import { BrowserRouter as Router, Match, Miss, Link } from 'react-router';
+import { BrowserRouter as Router, Match, Miss, Link, Redirect } from 'react-router';
+import { connect } from 'react-redux';
 import PlayerSetup from './PlayerSetup';
 import NoMatch from './NoMatch';
 import GameBoard from './GameBoard';
@@ -21,7 +22,5 @@ class App extends Component {
     );
   }
 }
-
-
 
 export default App;

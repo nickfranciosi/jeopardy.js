@@ -2,6 +2,7 @@ import React, { PropTypes } from 'react';
 import { Link } from 'react-router';
 import PlayerForm from './components/PlayerForm';
 import { addPlayer, removePlayer } from './actions';
+import { initializeGame } from '../GameBoard/actions';
 import { connect } from 'react-redux';
 
 class PlayerSetup extends React.Component {
@@ -29,8 +30,20 @@ class PlayerSetup extends React.Component {
     return playerForms;
   }
 
+  hasEnoughPlayers() {
+    return this.props.players.length <= this.props.maxPlayers;
+  }
+
+  doesNotHaveTooManyPlayers() {
+    return this.props.players.length >= this.props.minPlayers
+  }
+
   ableToStartGame(){
-    return ((this.props.players.length <= this.props.maxPlayers) && (this.props.players.length >= this.props.minPlayers));
+    if (this.hasEnoughPlayers() && this.doesNotHaveTooManyPlayers()) {
+      this.props.initializeGame(this.props.players);
+      return true;
+    }
+      return false;
   }
 
   render() {
@@ -51,6 +64,7 @@ PlayerSetup.propTypes = {
   players: PropTypes.array.isRequired,
   addPlayer: PropTypes.func.isRequired,
   removePlayer: PropTypes.func.isRequired,
+  initializeGame: PropTypes.func.isRequired,
 };
 
 PlayerSetup.defaultProps = {
@@ -58,4 +72,4 @@ PlayerSetup.defaultProps = {
   maxPlayers: 3,
 }
 
-export default connect(({players})=>({players}), { addPlayer, removePlayer })(PlayerSetup);
+export default connect(({players})=>({players}), { addPlayer, removePlayer, initializeGame})(PlayerSetup);

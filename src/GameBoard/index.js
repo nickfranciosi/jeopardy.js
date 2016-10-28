@@ -4,7 +4,6 @@ import { playerStatusSelector } from './selectors';
 import PlayerList from './components/PlayerList';
 
 class GameBoard extends Component{
-
   render(){
     const {players} = this.props;
     return (

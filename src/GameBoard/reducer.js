@@ -15,6 +15,8 @@ const score = (state = {}, action) => {
 
 const scores =  (state = [], action) => {
   switch(action.type){
+    case C.INIT_GAME:
+      return action.payload.map(player => ({id: player.id, value: action.payload.value || 0}))
     case C.UPDATE_SCORE:
       return state.map(s => score(s, action));
     default:
@@ -28,7 +30,7 @@ const answeredLast = ( state = 1, action) => {
 
 const game = combineReducers({
   scores,
-  answeredLast
+  answeredLast,
 })
 
 export default game;
