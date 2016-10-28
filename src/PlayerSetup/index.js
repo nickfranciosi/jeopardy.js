@@ -1,7 +1,6 @@
 import React, { PropTypes } from 'react';
 import { Link } from 'react-router';
 import PlayerForm from './components/PlayerForm';
-import { v4 as randomId } from 'uuid';
 import { addPlayer, removePlayer } from './actions';
 import { connect } from 'react-redux';
 
