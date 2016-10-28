@@ -12,16 +12,16 @@ export const playersWithScoreSelector = createSelector(
   playersSelector,
   scoresSelector,
   (players, scores) => players.map(player => {
-    player.score = getPlayerScore(player.id, scores);
-    return player;
+    const score = getPlayerScore(player.id, scores);
+    return Object.assign({}, player, {score});
   })
 )
 
 export const playerStatusSelector = createSelector(
   playersWithScoreSelector,
   answeredLastSelector,
-  (players, answeredLast) => players.map(player => {
-    player.answeredLast = player.id === answeredLast;
-    return player;
+  (players, answerer) => players.map(player => {
+    const answeredLast = player.id === answerer;
+    return Object.assign({}, player, {answeredLast});
   })
 )
