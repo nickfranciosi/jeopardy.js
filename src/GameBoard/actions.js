@@ -1,5 +1,6 @@
 export const C = {
   UPDATE_SCORE: 'UPDATE_SCORE',
+  INIT_GAME: 'INIT_GAME',
 }
 
 export const updateScore = (id, value) => {
