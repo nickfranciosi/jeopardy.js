@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import { playerStatusSelector } from './selectors';
 import PlayerList from './components/PlayerList';
+import Question from './components/Question';
 
 class GameBoard extends Component{
   render(){
@@ -10,6 +11,7 @@ class GameBoard extends Component{
       <div>
         This is the gameboard
         <PlayerList players={players} />
+        <Question />
       </div>
     )
   }
