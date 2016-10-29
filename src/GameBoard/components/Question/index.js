@@ -1,14 +1,12 @@
 import React, {PropTypes} from 'react';
 import Timer from '../Timer';
+import ProgressBar from '../ProgressBar';
 
 const Question = (props) => {
   return (
     <Timer>
-      {(time) => (
-        <div>
-          This primitive holds several items.
-          <p>{time}</p>
-        </div>
+      {(start, time) => (
+        <ProgressBar start={start} current={time} />
       )}
     </Timer>
   );

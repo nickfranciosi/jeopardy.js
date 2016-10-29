@@ -3,7 +3,9 @@ import React, { Component, PropTypes} from 'react';
 class Timer extends Component {
 
   state = {
-    time: 10000,
+    start: 20000,
+    time: 20000,
+    interval: 50
   }
 
   componentDidMount() {
@@ -15,7 +17,7 @@ class Timer extends Component {
   }
 
   startTimer() {
-    this.timer = setInterval(this.tick.bind(this), 1000)
+    this.timer = setInterval(this.tick.bind(this), this.state.interval)
   }
 
   tick() {
@@ -23,7 +25,7 @@ class Timer extends Component {
       this.stopTimer();
     } else {
       this.setState({
-        time: this.state.time - 1000,
+        time: this.state.time - this.state.interval,
       })
     }
   }
@@ -34,7 +36,7 @@ class Timer extends Component {
 
 
   render(){
-    return this.props.children(this.state.time);
+    return this.props.children(this.state.start, this.state.time);
   }
 }
 
